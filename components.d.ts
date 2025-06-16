@@ -23,6 +23,8 @@ declare module 'vue' {
     DailyNews: typeof import('./src/components/pages/DailyNews.vue')['default']
     DashboardMenu: typeof import('./src/components/layout/DashboardMenu.vue')['default']
     DashboardTag: typeof import('./src/components/layout/DashboardTag.vue')['default']
+    ElAnchor: typeof import('element-plus/es')['ElAnchor']
+    ElAnchorLink: typeof import('element-plus/es')['ElAnchorLink']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElAvatar: typeof import('element-plus/es')['ElAvatar']
     ElBreadcrumb: typeof import('element-plus/es')['ElBreadcrumb']

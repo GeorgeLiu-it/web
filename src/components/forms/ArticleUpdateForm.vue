@@ -3,58 +3,24 @@
     <el-form
         :model="articleUpdateFormData"
         :validate-on-rule-change="false"
+        label-width="15%"
+        label-position="left"
     >
-      <el-form-item label="文章封面" prop="cover">
-        <el-upload
-            :action="`${path}/image/upload`"
-            drag
-            with-credentials
-            :headers="{'x-access-token':userStore.state.accessToken}"
-            :show-file-list="false"
-            :on-success="handleSuccess"
-            :on-error="handleSuccess"
-            name="image"
-        >
-
-          <el-image v-if="articleUpdateFormData.cover" :src="articleUpdateFormData.cover" alt=""/>
-
-          <div v-else class="upload-content">
-            <div class="container">
-              <component is="UploadFilled" class="upload-filled"></component>
-              <div class="el-upload__text">
-                Drop file here or <em>click to upload</em>
-              </div>
-            </div>
-          </div>
-
-          <template #tip>
-            <div class="el-upload__tip">
-              jpg/png/jpeg/ico/tiff/gif/svg/webp files with a size less than 20MB.
-            </div>
-          </template>
-        </el-upload>
-
-        <el-input
-            v-model="articleUpdateFormData.cover"
-            size="large"
-            disabled
-        />
-      </el-form-item>
-      <el-form-item label="文章标题" prop="title">
+      <el-form-item label="Title" prop="title">
         <el-input
             v-model="articleUpdateFormData.title"
             size="large"
-            placeholder="请输入文章标题"
+            placeholder="Please input title"
         />
       </el-form-item>
-      <el-form-item label="文章类别" prop="category">
+      <el-form-item label="Category" prop="category">
         <el-input
             v-model="articleUpdateFormData.category"
             size="large"
-            placeholder="请输入文章类别"
+            placeholder="Please input category"
         />
       </el-form-item>
-      <el-form-item label="文章标签" prop="tags">
+      <el-form-item label="Tags" prop="tags">
         <el-tag v-for="tag in articleUpdateFormData.tags"
                 :key="tag"
                 closable
@@ -71,27 +37,29 @@
             @keyup.enter="handleInputConfirm"
             @blur="handleInputConfirm"
         />
-        <el-button v-else @click="showInput">+ 新建标签</el-button>
+        <el-button v-else @click="showInput">
+          <el-icon><Plus /></el-icon>
+        </el-button>
       </el-form-item>
-      <el-form-item label="文章简介" prop="abstract">
+      <el-form-item label="Abstract" prop="abstract">
         <el-input
             v-model="articleUpdateFormData.abstract"
             type="textarea"
-            placeholder="请输入文章简介"
+            placeholder="Please input abstract"
         />
       </el-form-item>
 
-      <el-form-item label="文章内容" prop="content">
-        <el-button @click="drawer = true" icon="EditPen">编辑内容</el-button>
+      <el-form-item label="Content" prop="content">
+        <el-button @click="drawer = true" icon="EditPen">Edit Content</el-button>
           <el-drawer v-model="drawer" :direction="direction" size="80%">
             <template #header>
-              编辑内容
+              Edit Content
             </template>
             <template #default>
               <MdEditor v-model="articleUpdateFormData.content" @onUploadImg="onUploadImg"/>
             </template>
             <template #footer>
-              <el-text>点击上方X或外部任意区域即可退出编辑</el-text>
+              <el-text>Click the X above or anywhere outside to exit editing</el-text>
             </template>
           </el-drawer>
       </el-form-item>
@@ -102,12 +70,12 @@
               type="primary"
               size="large"
               @click="submitForm"
-          >确定
+          >Confirm
           </el-button>
           <el-button
               size="large"
               @click="layoutStore.state.articleUpdateVisible = false"
-          >取消
+          >Cancel
           </el-button>
         </div>
       </el-form-item>
