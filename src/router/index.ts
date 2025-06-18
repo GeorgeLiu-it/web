@@ -1,6 +1,7 @@
 import {createRouter, createWebHistory} from 'vue-router'
 import {useUserStore} from "@/stores/user";
 import {useLayoutStore} from "@/stores/layout";
+import { KeepAlive } from 'vue';
 
 const routes = [
     {
@@ -31,6 +32,32 @@ const routes = [
                 meta: {
                     title: "About"
                 }
+            }
+        ]
+    },
+    {
+        path: '/rag',
+        name: 'rag',
+        component: () => import('@/views/rag/index.vue'),
+        children: [
+            {
+                path: '/chat',
+                name: 'Chat',
+                meta: {
+                    title: 'Chat',
+                    icon: 'ChatDotRound',
+                    KeepAlive: true
+                },
+                component: () => import('@/views/rag/chat/index.vue')
+            },
+            {
+            path: '/documents',
+            name: 'Documents',
+            meta: {
+                title: 'Documents',
+                icon: 'FolderOpened'
+            },
+            component: () => import('@/views/rag/documents/index.vue')
             }
         ]
     },
@@ -207,22 +234,6 @@ const routes = [
                             title: "Feedback"
                         }
                     },
-                    // {
-                    //     path: "advertisement-list",
-                    //     name: "advertisement-list",
-                    //     component: () => import('@/views/dashboard/system/advertisement-list.vue'),
-                    //     meta: {
-                    //         title: "广告列表"
-                    //     }
-                    // },
-                    // {
-                    //     path: "friend-link-list",
-                    //     name: "friend-link-list",
-                    //     component: () => import('@/views/dashboard/system/friend-link-list.vue'),
-                    //     meta: {
-                    //         title: "友链列表"
-                    //     }
-                    // },
                     {
                         path: "login-logs",
                         name: "login-logs",
@@ -265,35 +276,11 @@ const routes = [
                                 }
                             },
                             // {
-                            //     path: "qq-config",
-                            //     name: "qq-config",
-                            //     component: () => import('@/views/dashboard/system/config/qq-config.vue'),
-                            //     meta: {
-                            //         title: "QQ登录配置"
-                            //     }
-                            // },
-                            // {
-                            //     path: "qiniu-config",
-                            //     name: "qiniu-config",
-                            //     component: () => import('@/views/dashboard/system/config/qiniu-config.vue'),
-                            //     meta: {
-                            //         title: "七牛云配置"
-                            //     }
-                            // },
-                            // {
                             //     path: "jwt-config",
                             //     name: "jwt-config",
                             //     component: () => import('@/views/dashboard/system/config/jwt-config.vue'),
                             //     meta: {
-                            //         title: "jwt配置"
-                            //     }
-                            // },
-                            // {
-                            //     path: "gaode-config",
-                            //     name: "gaode-config",
-                            //     component: () => import('@/views/dashboard/system/config/gaode-config.vue'),
-                            //     meta: {
-                            //         title: "高德配置"
+                            //         title: "jwt configuration"
                             //     }
                             // }
                         ]

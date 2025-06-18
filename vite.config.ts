@@ -38,6 +38,11 @@ export default defineConfig({
                 target: env.VITE_SERVER_URL,
                 changeOrigin: true,
             },
+            "/rag": {
+                target: env.VITE_RAG_SERVER_URL,
+                changeOrigin: true,
+                rewrite: path => path.replace(/^\/rag/, '')
+            },
         }
     }
 })

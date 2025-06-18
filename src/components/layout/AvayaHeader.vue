@@ -7,7 +7,7 @@
             alt=""/>
       </div>
       <div class="web-menu">
-        <el-menu mode="horizontal" :ellipsis="false" :router="true" :default-active="$route.path">
+        <el-menu mode="horizontal" :ellipsis="false" :router="true" :default-active="route.path">
           <template v-for="item in menuList">
             <el-menu-item :index="item.name"><span>{{ item.title }}</span></el-menu-item>
           </template>
@@ -25,8 +25,10 @@
 import LoginPopup from "@/components/common/LoginPopup.vue";
 import Carousel from "@/components/layout/Carousel.vue";
 import {useWebsiteStore} from "@/stores/website";
+import { useRoute } from 'vue-router';
 
 const websiteStore = useWebsiteStore()
+const route = useRoute()
 
 interface MenuItem {
   title: string;
@@ -36,7 +38,7 @@ interface MenuItem {
 const menuList: MenuItem[] = [
   {
     title: "Home",
-    name: "/",
+    name: "/chat",
   },
   {
     title: "Statistic",
