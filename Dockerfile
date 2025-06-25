@@ -17,13 +17,16 @@ COPY . .
 RUN npm run build
 
 # Stage 2: Serve with Nginx
-FROM nginx:1.25.4-alpine3.19
+FROM nginx:1.24-alpine
 
 # Copy built source
 COPY --from=build-stage /app/dist /usr/share/nginx/html
 
 # Set nginx configuration
 COPY nginx.conf /etc/nginx/nginx.conf
+
+# Copy CA certs (including your private CA)
+COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 
 # expose port
 EXPOSE 80
