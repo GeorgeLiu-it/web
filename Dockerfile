@@ -13,7 +13,7 @@ WORKDIR /app
 
 # Install node packages
 COPY package*.json ./
-RUN npm install --no-cache && npm install --save-dev @types/qs
+RUN npm install --no-cache
 
 # Build dist
 COPY . .
