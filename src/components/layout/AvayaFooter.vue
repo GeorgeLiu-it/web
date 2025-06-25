@@ -26,7 +26,7 @@ import {onUnmounted} from "vue";
 
 const websiteStore = useWebsiteStore()
 
-let timerId: number | null = null;
+let timerId: any | null = null;
 const elapsedTime = ref("");
 
 function updateElapsedTime() {

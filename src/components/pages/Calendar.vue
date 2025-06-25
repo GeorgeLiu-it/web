@@ -41,7 +41,7 @@ const calendarInfo = ref<WebsiteCalendarResponse>({
   inauspicious: '',
 })
 
-let timerId: number | null = null
+let timerId: any | null = null
 const currentTime = ref('')
 
 function updateCurrentTime() {

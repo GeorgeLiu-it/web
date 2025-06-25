@@ -58,7 +58,7 @@ function removeAllPending() {
  */
 function cancelRequest(url: string | string[]) {
   const urlList = Array.isArray(url) ? url : [url]
-  const keys = pendingMap.keys()
+  const keys = Array.from(pendingMap.keys())
   for (const _url of urlList) {
     const mapKeys = keys.filter(item => item.indexOf(_url) > -1)
     for (const key of mapKeys) {
