@@ -84,7 +84,7 @@ export const useUserStore = defineStore('user', () => {
         const userStore = useUserStore()
         userStore.reset()
         localStorage.clear()
-        router.push({name: 'avaya_index'}).then()
+        router.push({name: 'Chat'}).then()
     }
 
     watch(() => state.value.isUserLoggedInBefore, (newIsUserLoggedInBefore) => {

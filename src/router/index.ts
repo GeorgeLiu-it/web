@@ -245,7 +245,7 @@ const routes = [
                     {
                         path: "app-config",
                         name: "app-config",
-                        redirect: "/dashboard/system/app-config/site-config",
+                        redirect: "/dashboard/system/app-config/system-config",
                         component: () => import('@/views/dashboard/system/app-config.vue'),
                         meta: {
                             title: "Configuration"
@@ -275,14 +275,14 @@ const routes = [
                                     title: "Email"
                                 }
                             },
-                            // {
-                            //     path: "jwt-config",
-                            //     name: "jwt-config",
-                            //     component: () => import('@/views/dashboard/system/config/jwt-config.vue'),
-                            //     meta: {
-                            //         title: "jwt configuration"
-                            //     }
-                            // }
+                            {
+                                path: "jwt-config",
+                                name: "jwt-config",
+                                component: () => import('@/views/dashboard/system/config/jwt-config.vue'),
+                                meta: {
+                                    title: "jwt configuration"
+                                }
+                            }
                         ]
                     }
                 ]
