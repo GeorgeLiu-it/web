@@ -26,7 +26,7 @@ COPY --from=build-stage /app/dist /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/nginx.conf
 
 # Copy CA certs (including your private CA)
-COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
+COPY --from=build-stage /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 
 # expose port
 EXPOSE 80
