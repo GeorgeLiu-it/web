@@ -1,6 +1,9 @@
 # Stage 1: Build the app
 FROM node:20.16.0-slim as build-stage
 
+# Install ca-certificates tools
+RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates && rm -rf /var/lib/apt/lists/*
+
 # Add your private CA
 COPY Zscaler_Root_CA.crt /usr/local/share/ca-certificates/ca.crt
 RUN update-ca-certificates
