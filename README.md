@@ -117,7 +117,7 @@ docker compose up --build -d
 
 ```
 # pull source code
-git clone -b develop --single-branch https://github.com/GeorgeLiu-it/server.git
+git clone -b develop --single-branch https://github.com/GeorgeLiu-it/web.git
 ```
 
 **Run docker compose**
