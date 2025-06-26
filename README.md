@@ -99,7 +99,6 @@ services:
       - "80:80"
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./Zscaler_Root_CA.crt:/usr/local/share/ca-certificates/ca.crt:ro
     networks:
       - web-network
     restart: unless-stopped
